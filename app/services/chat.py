@@ -117,7 +117,7 @@ def generate_follow_up_questions(query: str, response: str) -> List[str]:
         ]
 
 async def chat_stream(request: ChatRequest) -> AsyncGenerator[ChatResponse, None]:
-    logger.info(f"Starting chat stream for query: {request.message}")
+    #logger.info(f"Starting chat stream for query: {request.message}")
     try:
         # 스마트스토어 관련성 확인
         is_related = is_smartstore_related(request.message)
@@ -201,7 +201,7 @@ async def chat_stream(request: ChatRequest) -> AsyncGenerator[ChatResponse, None
         # 유사도 검색 시 이전 컨텍스트도 함께 검색
         combined_query = f"{previous_context}\n{request.message}"
         similar_faqs = vector_store.query_similar(combined_query)
-        logger.info(f"Similar questions: {[meta['question'] for meta in similar_faqs['metadatas'][0]]}")
+        #logger.info(f"Similar questions: {[meta['question'] for meta in similar_faqs['metadatas'][0]]}")
 
         response = ChatResponse(
             answer='',

@@ -35,7 +35,7 @@ class VectorStore:
             return self.client.create_collection("smartstore_faq")
 
     def load_and_index_data(self):
-        logger.info("Starting to load FAQ data...")
+        #logger.info("Starting to load FAQ data...")
         try:
             with open("data/final_result.pkl", "rb") as f:
                 faq_data = pickle.load(f)
