@@ -5,6 +5,7 @@ from app.config import get_settings
 import logging
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import re
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -35,7 +36,7 @@ class VectorStore:
             return self.client.create_collection("smartstore_faq")
 
     def load_and_index_data(self):
-        #logger.info("Starting to load FAQ data...")
+        logger.info("Starting to load FAQ data...")
         try:
             with open("data/final_result.pkl", "rb") as f:
                 faq_data = pickle.load(f)
